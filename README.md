@@ -1,127 +1,513 @@
-The #1 Global Supply Chain Token For Marketplaces & Supply Chains On The Ethereum Blockchain.
-Simplify How, When, & Where You Do Business With BSC (BlackDiamond SC)Tokens. Never Worry About The Fees, Focus More On The Business.
+![Codefi](images/CodefiBanner.png)
 
-What Are the Main Supply Chain Challenges?
+# Overview of the repo
+ - [Universal Token For Assets and Payments](https://github.com/ConsenSys/ERC1400/blob/master/README.md)
+ - [Certificate-based token transfers](contracts/certificate/README.md)
+ - [Delivery-vs-payment](contracts/tools/DVP.md)
+ - [Fund issuance](contracts/tools/FundIssuer.md)
 
-The modern supply chain must evolve to meet new demands and supply chain challenges, and supply chain managers need to plan ahead to keep everything flowing smoothly. A combination of consumer expectations, more routes to market, international complexities and other factors creates significant challenges throughout the supply chain network.
+# Introduction
 
-The coronavirus crisis has revealed the fragility of the modern supply chain.
-• Recent data shows the devastating economic impact as week-on-week trade in China, the US and Europe halved because of the crisis.
-• Diverse sourcing and digitization will be the key to building stronger, smarter supply chains and ensuring a lasting recovery.
-The COVID-19 pandemic has hit global trade and investment at an unprecedented speed and scale. Multinational companies faced an initial supply shock, then a demand shock as more and more countries ordered people to stay at home. Governments, businesses and individual consumers suddenly struggled to procure basic products and materials, and were forced to confront the fragility of the modern supply chain. The urgent need to design smarter, stronger and more diverse supply chains has been one of the main lessons of this crisis.
+Never heard of tokenization
+  
+  --> See introduction [here](https://medium.com/@consensyscodefi/how-to-explain-tokenization-to-six-year-olds-well-sort-of-consensys-codefi-a40780c5d4ca).
 
-Increased Costs Throughout the Supply Chain
-Profit margins are under pressure as costs creep up throughout the supply chain network. These costs come from many areas, and a lack of visibility and accountability for reducing them can result in rising operational expenses.
-Major contributors to increased costs include:
-* 		Rising price of fuel to transport goods by road, sea or air
-* 		Increasing commodity prices raising the cost of raw materials
-* 		Higher labor costs from suppliers and manufacturers
-* 		Complex international logistics leading to higher charges for storage, transfer and management of products
+Never hear of Universal Token for Assets and Payments
+  
+  --> See webinar recording [here](https://www.youtube.com/watch?v=rlWO9rPL06U&feature=youtu.be).
+  
+  --> See blog article [here](https://codefi.consensys.net/blog/understanding-the-universal-token-for-assets-and-payments).
 
-Supply Chain Complexity Due to Multiple Channels to Market
-Consumers buy products across multiple channels, and as routes to market increase, the underlying supply chain must adapt. Supply chain managers need to develop variations on supply chain processes to address each of the channels:
-* 		eCommerce websites selling directly to consumers require fast last-mile delivery and local logistics.
-* 		Traditional retailers and wholesalers need large storage locations close to major metropolitan areas, combined with accurate inventory control to ensure product availability.
-* 		Third-party marketplaces like Amazon require a deep understanding of fulfillment options and close compliance with their terms and conditions.
-* 		Drop shipping retail requires fast international services so that consumers receive goods quickly.
-Supply chain managers must manage multiple supply chains, third parties and other organizations to ensure a good end customer experience, regardless of how they order and receive products.
+Blockchain technology and more specifically the emergence of "programmable" tokens have opened a world of new possibilities for financial assets: the creation of digital assets.
+Digital assets are financial assets, which have been "tokenized". This means each asset is represented by a token on the blockchain.
 
-Risk in the Supply Chain Creates Pressure
-International complexity, environmental changes, economic pressures and trade disputes all put pressure on the supply chain. This pressure can easily turn into risks and issues that snowball throughout the network, causing significant problems:
-* 		Suppliers, manufacturers, logistics, clients and customers are spread across multiple countries, time zones and continents, requiring careful coordination and management.
-* 		Adding more steps to the supply chain creates exponential complexity for upstream and downstream partners.
-* 		Siloed data and a lack of visibility increases the difficulty of reporting, business intelligence and good decision-making.
-* 		Regulations, compliance and quality management demands strong agreements, contracts and controls with supply chain organizations.
-Supply chain managers must develop contingencies and mitigating action plans to prioritize and eliminate risks and manage issues when they occur.
+As introduced by the [token taxonomy framework](https://github.com/token-taxonomy-consortium/TokenTaxonomyFramework), there are 3 main categories of tokens:
+ - **Fungible tokens**: Fungible tokens are all identical and cannot be distinguished from each other. Each individual token is essentially interchangeable, like US dollars, company shares, or ounces of gold. This is probably the simplest and most common category of tokens.
+ - **Non-fungible tokens**: A non-fungible token is unique. Non-fungible tokens (NFTs) are used to create verifiable digital scarcity, as well as representing asset ownership of things like real estate, luxury goods, works of art, or collectible objects in video games (CryptoKitties is an early example). Essentially, NFTs are used for items which require a unique digital fingerprint.
+ - **Hybrid tokens**: Hybrid tokens are a mix of both. Each token belongs to a class (sometimes also called category/partition/tranche). Inside a given class, all tokens are the same: they are fungible. But tokens from different classes can be distinguished from each other: they are non-fungible. **By combining both advantages of fungibility and non-fungibility, hybrid tokens often appear as a relevant way to represent financial assets.**
 
-Risk in the Supply Chain Creates Pressure
+ ![Picture8](images/Picture9.png)
+ 
+Token standards have emerged in the Ethereum community.
 
-The Solution:
+**ERC20** is the most basic and most adopted token standard. It can be seen as the "axiom of fungible token standards" and is compatible with the majority of existing tools and platforms.
 
-What Is Tokenization?
-Tokenization is the act of representing something of value with a token, on a blockchain network. This can be anything from money to real estate, the token acts as an asset representing that item, and is operated on a particular blockchain network through smart contracts. Tokenization has infiltrated several unsuspecting industries in recent years and is giving all the indications to prove it is here to stay.
+**ERC1400** is a hybrid token standard precisely designed for the use case of tokenized financial assets:
+ - By being ERC20 retrocompatible, it remains compatible with the majority of existing tools and platforms.
+ - By being partially-fungible (hybrid token), it allows to represent different classes of assets, perform more evolved token actions (lock tokens, collateralize tokens, etc.), which is essential in the context of corporate actions.
+ - By offering the possibility to attach data to transfers, strong control over token transfers, based on granular certificate checks can be setup by issuers.
 
-Tokenization in the Supply Chain Industry
-In order to incorporate tokenization, the supply chain management system will need to be operated on the same blockchain network. The movement and storage of raw goods to end products will be traced by the use of a token, essentially creating digital representations of the goods that can be traced by the supply chain manager. Two problems the current centralized systems are facing are isolated data storage and a lack of trust between the multiple entities. With a blockchain network, all data is stored in real time and is available for any involved parties to see. The issue of trust is solved as blocks recording the information in the blockchain cannot be tampered with.
+The following repository contains the ERC1400 implementation used by the Codefi Assets platform.
 
-New Supply Chain Tokenization 
-BlackDiamond SC, a company fairly new in this movement, is currently implementing these processes into their supply chain network. The company is spanning across several industries. These industries range from events, minerals, renewable energy to wine and spirits exc. BSC is built upon the Ethereum blockchain and can facilitate a number of transactions that pan across the various industries requirements; paying a utility bill, leasing equipment, decentralized e-commerce and much more etc. This shared infrastructure allows for vertical and horizontal integration of the portfolio companies, as well as allowing quick attainment of economies of scale.
-In conclusion, the integration of blockchain tokenization is slowly but surely infiltrating into industries that have been around for decades, if not centuries. This is indeed a leap forward in terms of technology, but also in establishing trust and easier and more transparent supply chain management. We are already seeing tokenization revolutionize the supply chain industry, and it is only a matter of time before it becomes the norm.
+# Why do we need a Universal Token for Assets and Payments?
 
-In the context of trade financing, tokenization has the potential to solve many problems; among these the creation of ‘smart’ contracts, shipment tracking, and buyer confirmations. But one of the biggest problems it could solve is in freeing-up liquidity when it comes to non-liquid assets, like unpaid invoices.
-Late, or unpaid invoices are a huge pain point for businesses both large and small, but are especially painful for small to medium sized businesses (SMBs). The numbers back this up too, with one in five SMBs failing to survive past their first five years, citing unpaid invoices as the number one reason for failure[1]. If tokenization is all it’s cracked up to be, it could be a game-changer for these struggling SMBs. 
+ ![Picture10](images/Picture10.png)
 
-The Technology
-The first two characteristics we will look at are the core results of using blockchain. They are tools that allow us to create a system that can keep track of the history or provenance of the materials we are transacting and ensure that record is trustworthy:
-* 		Blockchain can tokenize minerals and metals, assets, along with key due diligence data submitted by all participating supply chain actors. These tokens are digital assets that are highly tamper-resistant.
-* 		Blockchain maintains an unchangeable record of transactions for these tokens. This gives us the ability to create an immutable chain of custody and confidence in the data in our system.
-The Incentives
-The next two characteristics provide incentives for every supply chain actor to use our well-designed technology tools. They are how we can turn our system from a novelty for companies who know each other well, into a global infrastructure that can address some of the deepest problems the mineral supply chain, energy supply chain and the manufacturers supply chain faces:
-* 		Blockchain can create self-governed incentive systems, to make it beneficial for supply chain actors to participate in the system.
-* 		Blockchain allows parties who do not trust each other to transact without a trusted third party, eliminating the need to trust a single company with supply chain data.
-The success of our mineral blockchain tracking system depends completely on designing the technology tools properly, as well as the incentives.
+When we started developing the token, we knew that the future would sit at the intersection of traditional finance and decentralized finance. Our ambition was to find a way to create a bridge between both worlds.
+But as of today, those 2 have very different characteristics:
+ - DeCentralised finance is still reserved mainly for crypto-friendly investors, and has difficulties attracting more traditional ones
+ - Traditional finance still requires strong control capabilities over issued assets, while DeFi fosters more on simplicity of access and processes automation
+ - Finally the first one relies on trust in the law, and financial institutions, while the latter relies on trust in the code
 
-Tokens are digital assets that are created according to rules agreed upon by everyone using the blockchain. They cannot be produced in any other way, and cannot be duplicated or forged. This property means we can limit the number of tokens available, and this rarity means they can represent real-world assets such as minerals or metals.
+Now the question is:
+ - How do we reconcile those 2 worlds?
+ - How do we increase the diversity and the volume of assets in the DeFi world?
+ - How can we release traditional assets in the DeFi economy, in order to benefit from the advantages it provides?
+
+ ![Picture11](images/Picture11.png)
+
+The future looks like this. 
+A world where DeFi automation mechanisms are extended to traditional assets, while remaining compliant with existing regulatory constraints.
+
+Of course this can not happen in one day, and Codefi’s mission is to make the transition painless.
+We want to SMOOTHLY introduce traditional investors to the world of DeFi, without ignoring requirements of the existing system.
+
+Today, DeFi is still reserved for “early adopters”.
+Accepting the constraints of the existing system (strong issuer or regulator control capabilities, legal agreements, investor verification, etc.) is the only way to convince the “early majority” to adopt a new mindset.
+
+Building upon the existing system is the only way to increase adoption.
+
+# What are the main challenges to overcome?
+
+ ![Picture12](images/Picture12.png)
+
+4 major requirements to overcome, to make the CeFi <> DeFi convergence a reality are the following:
+ - **Adapted control mechanisms**: it’s a legal requirement for asset issuers in traditional finance to be empowered with strong control capabilities over issued assets
+ - **Permanent reliability of investor registry**: asset issuers are accountable for maintaining a reliable investor registry
+ - **Certainty of execution for delivery-vs-payment**: delivery-vs-payment operations on the secondary market, need to be the result of mechanisms that can not fail
+ - **Interoperability with the Ethereum ecosystem**: all those requirements need to be taken into account while remaining compatible with the Ethereum ecosystem and more specifically with the DeFi tools
+
+We’ll now deep dive into those 4 requirements to see what essential features a universal token for assets and payments shall offer.
+
+## Interoperability with the Ethereum ecosystem
+
+ ![Picture13](images/Picture13.png)
+
+#### ERC20 interface
+One of the things that Ethereum has done best is its token standards.
+The whole Ethereum community has reached consensus on those standards.
+A rich ecosystem of tools and platforms has emerged.
+The most well-known token standard is called ERC20: it is an interface for fungible tokens.
+
+Its “transfer” and “balanceOf” functions are now pre-requisites to be compatible with wallets and key custody solutions, like Metamask of Ledger hardware wallets.
+
+Its “allowance” and “transferFrom” functions are important for interoperability with other smart contracts.
+Airswap p2p trading plaform uses those functions to execute delivery-vs-payment operations.
+
+#### Possibility to escrow tokens
+Another important aspect for interoperability is the possibility to escrow tokens.
+
+Escrow a token means accepting a smart contract to be the owner of the token (instead of a human person).
+Token escrow mechanisms are used by lots of DeFi smart contract:
+ - Lending contracts like Compound need escrows to store collateralized tokens
+ - Decentralized exchanges like Uniswap or derivatives platforms like Synthetix need escrows to create liquidity pools
+
+In the end, an ERC20 interface + the possibility to escrow tokens are mandatory to be compatible with the Ethereum ecosystem.
+
+## Control Mechanisms
+
+Second major topic for assets and payments is control mechanisms.
+
+ ![Picture14](images/Picture14.png)
+
+When building financial instruments, controlling who has access to a specific instrument is paramount.
+Every asset distribution, or asset transfer needs to be controlled by the issuer of the asset.
+There are two main solution that we’ve implemented.
+ - **Certificates generated off-chain**: a certificate is a signed hash of the transaction parameters. A new certificate needs to be created for every new transfer. This offers very strong control capabilities. But unfortunately, it is not compatible with the ERC20 interface, thus making things more complex when it comes towards interoperability with the Ethereum ecosystem.
+ - **List of validated investors stored on-chain**: the token smart contract just consults this list every time it needs to perform a transfer. In the future, we can envision a world where such global allowlists will be curated by consortiums of financial institutions or even regulators themselves, but today, those don’t exist. This method lacks flexibility since an Ethereum transaction is required everytime we need to modify the list. But the good thing is, it allows to use the ERC20 transfer function, thus making it interoperable with the Ethereum ecosystem.
 
 
-Imagine we start a company that wants to produce responsible gold for investment purposes. They purchase all their gold from one large scale refiner that purchases all their supply from one large scale mine. All of the production practices are responsible and are regularly audited so our company can be confident that the gold is responsible.
-We purchase this gold in the form of 1oz bars and put the bars into a vault. For each bar in the vault we create a fungible, digital token on a blockchain which is then sold on the open market. This gold token would contain a link back to a website that shows how responsible the gold is. At any point, the owner of a gold token could redeem the token with our company to receive a gold bar from our vault.
-Positive Outcomes of this Approach
-* 		Fungible tokens are easy to manage because we do not need a physical identifier linking the token to the metal. We know all the metal is in a vault, and it all comes from one source, so it doesn’t matter which bar is which.
-* 		Investors can move into and out of gold positions fluidly with minimal transaction fees.
-* 		Implementation is straightforward — there are few real-world company processes that would have to be changed, and only one company (ours) needs to know how to use the blockchain. Our company can decide to implement such a system unilaterally without the buy-in from every member of the supply chain.
-Limitations of Fungible Tokens
-* 		The tokens are only able to be fungible because we control all the aspects of responsibility of the supply chain and keep the gold from these processes separate from the rest of the market. It works well because we have one vault storing all our gold coming from only known sources and audited supply chains. If multiple companies each create their own vault and their own fungible token, these tokens could not be mixed without losing the information about which vaults held our gold. This makes such a system difficult to scale
-* 		Gold token buyers have to trust us when we say that the gold is responsible. Our company is providing data on a webpage showing that the gold in our vault is responsibly sourced, but there’s nothing in the system itself that tracks the gold from the extraction point up the supply chain. This might be good enough when we have one source and a lot of data on that source, however to scale, we will likely need stronger supply chain traceability.
-* 		Fungible tokens may represent responsibly sourced metals, but they are still very valuable digital assets that can be transferred at will between wallets without needing a middleman. Ironically, this means our responsible gold tokens could be used to launder money, and we would need to take measures to prevent this.
-Example 2 — Adding a layer of complexity to fungible tokens representing gold
-Our previous example had very limited use of blockchain. We were able to create a digital representation of the gold in a vault, but the gold didn’t move. We can think of this as being able to track the amount of gold in the vault, which is one actor at one level of the gold supply chain.
-Can we just add actors each with their own fungible tokens to get better depth to our supply chain tracking?
-Imagine a gold mine processing ore onsite into “doré” bars, which is partially refined gold that still has silver mixed in. For each bar, they create a doré token, which is fungible. Just like the example above, the tokens are not traceable to a particular bar, but rather the amount of tokens are limited by the quantity of doré produced on site.
-When a shipment of bars is sold to a refiner, the mine would send an equivalent amount of doré tokens to the refiner. The refiner would then be able to destroy the doré tokens in order to create gold bar tokens.
-The gold bar tokens would be sent to our company along with the gold bars which are then put in the vault. With the gold bars in the vault, our fungible gold bar tokens can then be sold on the open market as in the example above.
-This system will allow us to track volumes of doré produced at the mine and volumes of doré that are converted to gold bars, however it does not allow us to track specific bars or shipments.
-Positive Outcomes of this Approach
-* 		This method gives us data about how much material is coming from each source, and this data is stored on the blockchain.
-* 		The tokens at the end of the process are still fungible and that makes them easy to trade.
-Limitations of this Approach
-* 		Because we are tracking materials along a supply chain, we need all companies along the supply chain to participate, making it more challenging to implement a project. These companies will likely need to adjust their internal processes in order to keep track of these blockchain-tracked shipments, meaning more work and cost.
-* 		Each new supply chain actor who creates a fungible token is an actor we need to trust. This means there are multiple points where the system could be vulnerable to human error or malicious intent because we now have to record more than just transactions, we have to record transformations (when the metal is refined and processed).
-* 		Because the tokens are still fungible, we cannot link them to specific shipments of metal. This limits our ability to record the transformations because we don’t have data on the specific shipments.
-This method essentially introduces a level of non-fungibility into our system. Although both the doré and the gold bar tokens are fungible, they cannot be mixed with each other.
-By adding layers of non-fungibility we get greater visibility into what’s going on in our supply chain, at the cost of it being more complex to implement.
+ ![Picture15](images/Picture15.png)
 
-Non-Fungible tokens
-Now that we have designed a basic token-based tracking system, we want to have an even greater level of detailed information which metals come from where. Perhaps traceability is more important to us than trading liquidity. For this, we can use non-fungible tokens to represent metal in our supply chain.
-Non-fungible tokens can be created to represent specific shipments of metal ores or ingots, so they are not interchangeable with another token, and effectively act as a digital twin that can be used to demonstrate who owns it. Each token can contain a link to data that demonstrates the responsibility of the shipment that it is linked to.
-Example 3 — Non-Fungible Token Representing Gold
-We can use a non-fungible token in our gold scenario which will act a bit like passing a baton from person to person in a relay race. When it gets to the end, it will have the fingerprints of everyone who held it, giving the owner a detailed history of the item.
-To illustrate, let’s go back to our gold mine again. Our responsible gold mine wants to sell responsibly sourced gold to their customers.
-They extract gold, melt it into doré bars that are weighed, and a non-fungible “doré” token is created to represent each bar. This time, the doré token contains a unique ID, which is put on a tag and attached to the doré bar, as well as a link to a database of due diligence data about the company that produced it. As the doré bars are passed from owner to owner, the associated non-fungible tokens are also passed along to each new owner.
-When each doré bar reaches the refiner, like before, it is processed into 1 oz gold bars. Unlike before we will not destroy the doré tokens, but rather freeze them so they can no longer be traded. When the new gold tokens are created they will link to the old doré tokens so we have a record of where they came from. When we put our gold bars in a vault, each will have a unique ID and customers can sell them on the open market, or redeem them for their specific gold bar.
-Improvements Over Fungible Tokens
-* 		Non-fungible tokens allow us to represent individual units of material (the doré bars and the kilo bars). Having this extra granularity of data means we are not limited to a single mineral source or vault.
-* 		Because the individual shipments are represented, we can also record who held them and where they were produced. This allows us to track minerals from the point of production, all the way down the supply chain.
-* 		The tokens are linked to specific bars or shipments, making them more difficult to use for money laundering.
-Some New Challenges
-* 		For the tokens to track the metal, we need to link the metal to the non-fungible tokens. Tagging presents a challenge whenever the material is processed or changes form.
-* 		We still need to ensure that good data is provided to the blockchain. Our non-fungible tokens are only as useful as the data they are based on.
-And of course, we lose all the benefits of fungible tokens. If we are tracking individual gold bars with a unique ID, we need to check these IDs whenever we trade them and make sure we have the right ones if we sell the physical bars. There is no getting around this. The point of tracking individual bars is to de-commoditize the gold.
-If we want to say that a gold bar that comes from a responsible source is different than one that funded human rights abuse, this is the trade-off.
+In traditional finance, correct maintenance of a registry is the responsibility of very large institutions, like central security depositories, transfer agent or even issuers themselves in some cases. These institutions must retain full control over the registry. 
+When the token is configured to be “controllable”, it provides the issuer with the capability to force token transfers, token creation, or destruction.
 
-In short, the easiest way to tokenize such assets as oil and gas is to sell the share right by using smart contracts. Yet, creating the smart contract, notwithstanding the complexity level is the easiest part of asset tokenization. 
-More important is to keep with the transparency. Token holders and investors should know what they are paying for, so here is basically a simple yet very effective solution.
-Constant Changes
-We should understand that such assets as oil and gas are involved in constant circulation and are difficult to be calculated due to sustained movement. Therefore the most appropriate time to calculate its amount is straight during the producing stage. Each producing “station” has its own system, where it records the number of resources produced. 
-And so, it’s possible not to create everything from scratch but to embed Blockchain directly to the existing system. Accordingly, each time our “station” produced a certain amount, it will be recorded in the blockchain network. Afterward, the system will give a signal to the Smart Contract to mint new tokens. The tokens will represent the equity rights or/and shares of the Management Company.
-The key benefits of such an approach:
+It is not the case in DeFi, where no one but the token holder can decide to transfer a token.
+This is seen by some as a really powerful feature, moving trust at the core of a protocol rather than in a public or private authority.
 
-* The audit and quality control are easier to be held;
-* The data will be un-erasable, and easily reached;
-* Private Blockchain allows dividing data access/management to different roles, with personal validation keys;
-* Reduces time management for collecting data;
-* Provides a transparent management system;
-* Increases the oil and gas trading market;
-* Confirms the availability of resources, as well as shows the real worth of the tokens.
-If you will succeed in tokenizing assets like oil and gas, the whole world will undergo dramatic changes. The understanding that assets may not be bound to the US dollar anymore will open more and more opportunities. Having a unique way to sell, coordinate and hold these assets will simplify the process of their trade. The world is waiting for great changes, and you could be the one to start them!
+Both setups, controllable or not, can be adapted, depending on the use case, and the “renounceControl” function allows to switch from one setup to the other.
 
+## Reliability of investor registry
+
+ ![Picture16](images/Picture16.png)
+
+When moving traditional securities on a public blockchain network, a fundamental principle needs to be respected: the created ownership registry shall at all time, reflect the beneficial holder of the assets. 
+
+Problem is, when this requirement is not compatible with the escrow mechanism.
+Indeed, on the right of this picture, when Joe escrow’s 4 token in an escrow contract, the owner of the token is the escrow contract and not Joe.
+This makes it complicated, or even sometimes impossible to know, that Joe is the beneficial owner of the assets.
+We lose the one essential feature of the blockchain as registry maintenance tool. 
+
+Initially, the reason why we need to send tokens to an escrow, is to lock them and make sure they CAN'T be spent.
+
+Token holds, that you can see on the left of the image, are an alternative to escrows, allowing to lock tokens while keeping them in the wallet of the investor.
+The good point with token holds is they preserve the investor registry, and ensure at any time we know who is the beneficial owner of the asset.
+
+Token holds are also very useful when it comes to distributing dividends to investors, in proportion to the amount of token they own, because we’re sure the investor registry is reliable.
+
+## Certainty of Execution for Delivery-vs-Payment
+
+ ![Picture17](images/Picture17.png)
+
+Delivery-vs-payment is an operation that consists in exchanging token representing cash against tokens representing assets.
+Delivery-vs-payment is a very powerful blockchain use case, as it can be done without middleman, but with certainty of execution.
+
+#### Allowances and escrows
+
+In today’s DeFi, most DvP use cases either rely on allowances or escrows in order to manage token exchanges.
+Both allowances and escrows are not optimal:
+ - **Allowance mechanisms** don’t provide certainty of execution for delivery vs payment (since the allowance doesn’t prevent the user for spending his tokens for something else after he has created a trade order)
+ - **Escrow mechanisms** do provide certainty of execution, but as described above, escrows do not preserve the accuracy of the registry (since the escrow contract becomes the owner of the tokens, instead of the investor). 
+
+#### Token holds
+
+Since allowances and escrows are not optimal, we’ve decided to use holds.
+A hold, similarly to an allowance, is an authorization created by the token holder, to allow someone else to transfer his tokens on his behalf.
+But a hold goes further than an allowance, by forbidding the holder to spend the tokens for something else, once the hold is created.
+The tokens are like locked on his own account.
+
+Delivery-vs-payment based on token holds combines both:
+ - The advantage of the escrow, that tokens can not be spent for something else before the trade execution
+ - The advantage of the allowance, that preserves a reliable token registry 
+
+#### HTLC (Hash Time Locked Contract)
+
+Moreover, token holds are compatible with HTLC mechanism.
+HTLC is a useful mechanism (description will be added soon) that allows to manage cases where atomic delivery-vs-payment can not be performed:
+ - Either when the cash token and asset tokens are on 2 different blockchain networks
+ - Or when the cash token and asset tokens are private smart contracts (privacy groups, or zkAssets)
+
+# What shall the Universal Token for Assets and Payments look like?
+
+With all requirements detailed above in mind, here’s and overview of the universal token for assets and payments.
+
+ ![Picture18](images/Picture18.png)
+
+As belonging to the hybrid token category, it benefits from both:
+ - Advantages of fungibility
+ - Advantages of non-fungibility
+
+It combines all requirements listed in this presentation:
+ - For **control mechanisms**, it offers a module for certificate checks and a module for allowlist checks + it offers the possibility to force transfers
+ - For **reliability of investor registry**, it provides a module to create token holds
+ - For **certainty of delivery-vs-payment execution**, it includes token holds for atomic DVP, and HTLC mechanism for non-atomic DVPs
+ - For **interoperability**, it offers an ERC20 interface
+
+The features can be turned ON and OFF during the token’s lifecycle.
+
+We believe this modular approach offers enough flexibility to satisfy both traditional stakeholders and crypto-friendly publics,
+in order to make the DeFi <> CeFi convergence a reality.
+
+ ![Picture19](images/Picture19.png)
+
+The hybrid structure of the token even allows, to setup different modules for the different classes of the token:
+ - some classes can be setup for traditional finance, by being controllable, and including the certificate module
+ - other classes can be setup for decentralized finance, and rely on an allowlist module
+
+Tokens can switch from a token class to another, with an on-ramp/off-ramp mechanism.
+
+Moving tokens from a class to another allows to easily change how they are controlled. 
+
+This means the token allows to operate on both CeFi and DeFi at the same time:
+ - **Rigth now**, financial instruments can be issued with a setup adapted to the current regulatory context
+ - **Later**, the setup can be gradually adapted for Decentralized Finance when the regulation becomes clearer
+
+
+ ![Picture20](images/Picture20.png)
+
+In conclusion, universal token is modular, evolutive, and can be adapted to multiple use cases, thus making it a relevant standard to achieve unification of 2 worlds.
+
+The possibility to turn features on and off at any time, allows to transition from CeFi to DeFi while keeping the same token.
+
+The evolution of the law will allow traditional finance to slowly migrate towards more “decentralized” setups.
+On the other hand, DeFi tools’ interface will evolve to become compatible with a higher number of standards (by supporting token holds, certificates, etc.).
+
+
+# What is Codefi Assets?
+
+Codefi Assets is an advanced institutional technology platform for issuance and management of tokenized financial assets, powered by the Ethereum blockchain. Codefi Assets is a product created by ConsenSys.
+
+https://codefi.consensys.net/codefiassets
+
+### A platform for financial asset issuance & management
+
+The current capital market still needs to overcome a few pain points:
+ - Today, it is cumbersome and costly to issue an asset.
+ - Once issued, the assets are mainly reserved for high-ticket investors.
+ - Finally, those assets are not easily tradeable, which strongly limits the secondary market possibilities.
+
+With Codefi Assets, we want to tokenize the capital market to tackle those pain points. In the new system, we imagine:
+ - An asset issuance will be faster, simpler but also cheaper than today.
+ - This reduction of costs will allow us to onboard smaller ticket investors.
+ - Globally, the tokenization removes constraints for more liquid and frictionless asset transfers, while keeping a strong control over the market, thus liberating the secondary market.
+
+### Video demo of an asset issuance platform based on Codefi Assets technology
+
+![CodefiVideo](images/CodefiVideo.png)
+
+Link to video:
+https://www.youtube.com/watch?v=EWneY6Q_0ag&feature=youtu.be&ab_channel=MatthieuBouchaud
+
+
+# Quick overview of token standards (ERC20, ERC1400) 
+
+![Picture1](images/Picture1.png)
+![Picture2](images/Picture2.png)
+![Picture3](images/Picture3.png)
+![Picture4](images/Picture4.png)
+
+# Description of ERC1400 standard
+
+ERC1400 introduces new concepts on top of ERC20 token standard:
+ - **Granular transfer controls**: Possibility to perform granular controls on the transfers with a system of certificates (injected in the additional `data` field of the transfer method)
+ - **Controllers**: Empowerment of controllers with the ability to send tokens on behalf of other addresses (e.g. force transfer).
+ - **Partionned tokens** (partial-fungibility): Every ERC1400 token can be partitioned. The partition of a token, can be seen as the state of a token. It is well adapted for representing, classes of assets, performing corporate actions, etc.
+ - **Document management**: Possibility to bind tokens to hashes of legal documents, thus making the link between a blockchain transaction and the real world.
+
+Optionally, the following features can also be added:
+ - **Hooks**: Possibility for token senders/recipients to setup hooks, e.g. automated actions executed everytime they send/receive tokens, thanks to [ERC1820](http://eips.ethereum.org/EIPS/eip-1820).
+ - **Upgradeability**: Use of ERC1820([eips.ethereum.org/EIPS/eip-1820](http://eips.ethereum.org/EIPS/eip-1820)) as central contract registry to follow smart contract migrations.
+
+
+# Focus on ERC1400 implementation choices
+
+This implementation has been developed based on EIP-spec interface defined by the [security token roundtable](https://github.com/SecurityTokenStandard/EIP-Spec/blob/master/eip/eip-1400.md).
+
+We've performed a few updates compared to the original submission, mainly to fit with business requirements + to save gas cost of contract deployment.
+
+#### Choices made to fit with business requirements
+ - Introduction of sender/recipient hooks ([IERC1400TokensRecipient](contracts/extensions/userExtensions/IERC1400TokensRecipient.sol), [IERC1400TokensSender](contracts/extensions/userExtensions/IERC1400TokensSender.sol)). Those are inspired by [ERC777 hooks]((https://eips.ethereum.org/EIPS/eip-777)), but they have been updated in order to support partitions, in order to become ERC1400-compliant.
+ - Modification of view functions ('canTransferByPartition', 'canOperatorTransferByPartition') as consequence of our certificate design choice: the view functions need to have the exact same parameters as 'transferByPartition' and 'operatorTransferByPartition' in order to be in measure to confirm the certificate's validity.
+ - Introduction of validator hook ([IERC1400TokensValidator](contracts/extensions/tokenExtensions/IERC1400TokensValidator.sol)), to manage updates of the transfer validation policy across time (certificate, allowlist, blocklist, lock-up periods, investor caps, pauseability, etc.), thanks an upgradeable module.
+ - Extension of ERC20's allowance feature to support partitions, in order to become ERC1400-compliant. This is particularly important for secondary market and delivery-vs-payment.
+ - Possibility to migrate contract, and register new address in ERC1820 central registry, for smart contract upgradeability.
+
+#### Choices made to save gas cost of contract deployment
+ - Removal of controller functions ('controllerTransfer' and 'controllerRedeem') and events ('ControllerTransfer' and 'ControllerRedemption') to save gas cost of contract deployment. Those controller functionalities have been included in 'operatorTransferByPartition' and 'operatorRedeemByPartition' functions instead.
+ - Export of 'canTransferByPartition' and 'canOperatorTransferByPartition' in optional checker hook [IERC1400TokensChecker](contracts/extensions/tokenExtensions/IERC1400TokensChecker.sol) as those functions take a lot of place, although they are not essential, as the result they return can be deduced by calling other view functions of the contract.
+
+NB: The original submission with discussion can be found at: [github.com/ethereum/EIPs/issues/1411](https://github.com/ethereum/EIPs/issues/1411).
+
+# Interfaces
+
+#### ERC1400 interface
+
+The [IERC1400 interface](contracts/IERC1400.sol) of this implementation is the following:
+```
+interface IERC1400 /*is IERC20*/ { // Interfaces can currently not inherit interfaces, but IERC1400 shall include IERC20
+
+  // ****************** Document Management *******************
+  function getDocument(bytes32 name) external view returns (string memory, bytes32);
+  function setDocument(bytes32 name, string calldata uri, bytes32 documentHash) external;
+
+  // ******************* Token Information ********************
+  function balanceOfByPartition(bytes32 partition, address tokenHolder) external view returns (uint256);
+  function partitionsOf(address tokenHolder) external view returns (bytes32[] memory);
+
+  // *********************** Transfers ************************
+  function transferWithData(address to, uint256 value, bytes calldata data) external;
+  function transferFromWithData(address from, address to, uint256 value, bytes calldata data) external;
+
+  // *************** Partition Token Transfers ****************
+  function transferByPartition(bytes32 partition, address to, uint256 value, bytes calldata data) external returns (bytes32);
+  function operatorTransferByPartition(bytes32 partition, address from, address to, uint256 value, bytes calldata data, bytes calldata operatorData) external returns (bytes32);
+
+  // ****************** Controller Operation ******************
+  function isControllable() external view returns (bool);
+  // function controllerTransfer(address from, address to, uint256 value, bytes calldata data, bytes calldata operatorData) external; // removed because same action can be achieved with "operatorTransferByPartition"
+  // function controllerRedeem(address tokenHolder, uint256 value, bytes calldata data, bytes calldata operatorData) external; // removed because same action can be achieved with "operatorRedeemByPartition"
+
+  // ****************** Operator Management *******************
+  function authorizeOperator(address operator) external;
+  function revokeOperator(address operator) external;
+  function authorizeOperatorByPartition(bytes32 partition, address operator) external;
+  function revokeOperatorByPartition(bytes32 partition, address operator) external;
+
+  // ****************** Operator Information ******************
+  function isOperator(address operator, address tokenHolder) external view returns (bool);
+  function isOperatorForPartition(bytes32 partition, address operator, address tokenHolder) external view returns (bool);
+
+  // ********************* Token Issuance *********************
+  function isIssuable() external view returns (bool);
+  function issue(address tokenHolder, uint256 value, bytes calldata data) external;
+  function issueByPartition(bytes32 partition, address tokenHolder, uint256 value, bytes calldata data) external;
+
+  // ******************** Token Redemption ********************
+  function redeem(uint256 value, bytes calldata data) external;
+  function redeemFrom(address tokenHolder, uint256 value, bytes calldata data) external;
+  function redeemByPartition(bytes32 partition, uint256 value, bytes calldata data) external;
+  function operatorRedeemByPartition(bytes32 partition, address tokenHolder, uint256 value, bytes calldata operatorData) external;
+
+  // ******************* Transfer Validity ********************
+  // We use different transfer validity functions because those described in the interface don't allow to verify the certificate's validity.
+  // Indeed, verifying the ecrtificate's validity requires to keeps the function's arguments in the exact same order as the transfer function.
+  //
+  // function canTransfer(address to, uint256 value, bytes calldata data) external view returns (byte, bytes32);
+  // function canTransferFrom(address from, address to, uint256 value, bytes calldata data) external view returns (byte, bytes32);
+  // function canTransferByPartition(address from, address to, bytes32 partition, uint256 value, bytes calldata data) external view returns (byte, bytes32, bytes32);    
+
+  // ******************* Controller Events ********************
+  // We don't use this event as we don't use "controllerTransfer"
+  //   event ControllerTransfer(
+  //       address controller,
+  //       address indexed from,
+  //       address indexed to,
+  //       uint256 value,
+  //       bytes data,
+  //       bytes operatorData
+  //   );
+  //
+  // We don't use this event as we don't use "controllerRedeem"
+  //   event ControllerRedemption(
+  //       address controller,
+  //       address indexed tokenHolder,
+  //       uint256 value,
+  //       bytes data,
+  //       bytes operatorData
+  //   );
+
+  // ******************** Document Events *********************
+  event Document(bytes32 indexed name, string uri, bytes32 documentHash);
+
+  // ******************** Transfer Events *********************
+  event TransferByPartition(
+      bytes32 indexed fromPartition,
+      address operator,
+      address indexed from,
+      address indexed to,
+      uint256 value,
+      bytes data,
+      bytes operatorData
+  );
+
+  event ChangedPartition(
+      bytes32 indexed fromPartition,
+      bytes32 indexed toPartition,
+      uint256 value
+  );
+
+  // ******************** Operator Events *********************
+  event AuthorizedOperator(address indexed operator, address indexed tokenHolder);
+  event RevokedOperator(address indexed operator, address indexed tokenHolder);
+  event AuthorizedOperatorByPartition(bytes32 indexed partition, address indexed operator, address indexed tokenHolder);
+  event RevokedOperatorByPartition(bytes32 indexed partition, address indexed operator, address indexed tokenHolder);
+
+  // ************** Issuance / Redemption Events **************
+  event Issued(address indexed operator, address indexed to, uint256 value, bytes data);
+  event Redeemed(address indexed operator, address indexed from, uint256 value, bytes data);
+  event IssuedByPartition(bytes32 indexed partition, address indexed operator, address indexed to, uint256 value, bytes data, bytes operatorData);
+  event RedeemedByPartition(bytes32 indexed partition, address indexed operator, address indexed from, uint256 value, bytes operatorData);
+
+}
+```
+
+#### ERC1066 interface for reason codes
+
+To improve the token holder experience, canTransfer MUST return a reason byte code on success or failure based on the [ERC1066](https://ethereum-magicians.org/t/erc-1066-ethereum-status-codes-esc/283/24) application-specific status codes specified below. An implementation can also return arbitrary data as a bytes32 to provide additional information not captured by the reason code.
+```
+ * Code	Reason
+ * 0x50	transfer failure
+ * 0x51	transfer success
+ * 0x52	insufficient balance
+ * 0x53	insufficient allowance
+ * 0x54	transfers halted (contract paused)
+ * 0x55	funds locked (lockup period)
+ * 0x56	invalid sender
+ * 0x57	invalid receiver
+ * 0x58	invalid operator (transfer agent)
+ * 0x59	
+ * 0x5a	
+ * 0x5b	
+ * 0x5a	
+ * 0x5b	
+ * 0x5c	
+ * 0x5d	
+ * 0x5e	
+ * 0x5f	token meta or info
+```
+
+
+## Quick start: How to test the contract?
+
+Prerequisites: please make sure you installed "yarn" on your environment.
+```
+$ brew install yarn
+$ brew install nvm
+```
+
+Test the smart contract, by running the following commands:
+```
+$ git clone git@github.com:ConsenSys/ERC1400.git
+$ cd ERC1400
+$ nvm use
+$ yarn
+$ yarn coverage
+```
+
+
+## How to deploy the contract on a blockchain network?
+
+#### Step1: Define Ethereum wallet and Ethereum network to use in ".env" file
+
+A few environment variables need to be specified. Those can be added to a ".env" file: a template of it can be generated with the following command:
+```
+$ yarn env
+```
+
+The ".env" template contains the following variables:
+
+MNEMONIC - Ethereum wallets which will be used by the webservice to sign the transactions - [**MANDATORY**] (see section "How to get a MNEMONIC?" in appendix)
+
+INFURA_API_KEY - Key to access an Ethereum node via Infura service (for connection to mainnet or ropsten network) - [OPTIONAL - Only required if NETWORK = mainnet/ropsten] (see section "How to get an INFURA_API_KEY?" in appendix)
+
+#### Step2: Deploy contract
+
+**Deploy contract on ganache**
+
+In case ganache is not installed:
+```
+$ yarn global add ganache-cli
+```
+Then launch ganache:
+```
+$ ganache-cli -p 7545
+```
+
+In a different console, deploy the contract by running the migration script:
+```
+$ yarn truffle migrate
+```
+
+**Deploy contract on ropsten**
+
+Deploy the contract by running the migration script:
+```
+$ yarn truffle migrate --network ropsten
+```
+
+
+## APPENDIX
+
+### How to get a MNEMONIC?
+
+#### 1.Find a MNEMONIC
+
+There are 2 options to get MNEMONIC:
+ - Either generate 12 random words on https://iancoleman.io/bip39/ (BIP39 Mnemonic).
+ - Or get the MNEMONIC generated by ganache with the following command:
+```
+$ ganache-cli
+```
+The second option is recommended for development purposes since the wallets associated to the MNEMONIC will be pre-loaded with ETH for tests on ganache.
+
+#### 2.Load the wallet associated to the MNEMONIC with ether
+
+If you've used ganache to generate your MNEMONIC and you only want to perform tests on ganache, you have nothing to do. The accounts are already loaded with 100 ETH.
+
+For all other networks than ganache, you have to send ether to the accounts associated to the MNEMONIC:
+ - Discover the accounts associated to your MNEMONIC thanks to https://www.myetherwallet.com/#view-wallet-info > Mnemonic phrase.
+ - Send ether to those accounts.
+
+### How to get an INFURA_API_KEY?
+
+INFURA_API_KEY can be generated by creating an account on https://infura.io/
