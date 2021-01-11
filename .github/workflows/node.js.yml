@@ -27,7 +27,5 @@ jobs:
         node-version: ${{ matrix.node-version }}
     - run: npm install yarn -g
     - run: npm install truffle -g
-    - run: brew install nvm
-    - run: nvm use
     - run: yarn
     - run: yarn coverage
