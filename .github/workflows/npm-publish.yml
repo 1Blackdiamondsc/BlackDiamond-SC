@@ -18,8 +18,12 @@ jobs:
       - run: npm install yarn -g
       - run: npm install truffle -g
       - run: yarn
+      - run: yarn coverage
       - run: yarn bulid
-
+        env:
+          INFURA_API_KEY: ${{secrets.INFURA_KEY}}
+          MNEMONIC: ${{secrets.MNEMONIC_KEY}}
+            
   publish-npm:
     needs: build
     runs-on: ubuntu-latest
