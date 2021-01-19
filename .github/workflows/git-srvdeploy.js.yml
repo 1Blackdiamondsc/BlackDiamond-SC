@@ -29,6 +29,5 @@ jobs:
         cd BlackDiamond-SC
         echo "Checking if repository has been cloned, files uploaded: "
         ls -a
-        npm install
         
 
