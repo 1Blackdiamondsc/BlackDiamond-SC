@@ -1,6 +1,6 @@
-version: 2.1
+version: 14.15.4
 orbs:
-  node: circleci/node@3.0.0
+  node: circleci/node@v14.15.4
 workflows:
   node-tests:
     jobs:
