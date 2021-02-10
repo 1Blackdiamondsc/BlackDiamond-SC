@@ -14,9 +14,9 @@ jobs:
       - uses: actions/checkout@v2
       - uses: actions/setup-node@v1
         with:
-          node-version: 15.8.0
-      - run: npm install yarn -g
-      - run: npm install truffle -g
+          node-version: 12.x
+      - run: nvm install yarn -g
+      - run: nvm install truffle -g
       - run: yarn
       - run: yarn coverage
       - run: yarn bulid
@@ -31,10 +31,10 @@ jobs:
       - uses: actions/checkout@v2
       - uses: actions/setup-node@v1
         with:
-          node-version: 15.8.0
+          node-version: 12.x
           registry-url: https://registry.npmjs.org/
-      - run: npm install
-      - run: npm publish
+      - run: nvm install
+      - run: nvm publish
         env:
           INFURA_API_KEY: ${{secrets.INFURA_KEY}}
           MNEMONIC: ${{secrets.MNEMONIC_KEY}}
@@ -46,10 +46,10 @@ jobs:
       - uses: actions/checkout@v2
       - uses: actions/setup-node@v1
         with:
-          node-version: 15.8.0
+          node-version: 12.x
           registry-url: https://npm.pkg.github.com/
-      - run: npm install
-      - run: npm publish
+      - run: nvm install
+      - run: nvm publish
         env:
           INFURA_API_KEY: ${{secrets.INFURA_KEY}}
           MNEMONIC: ${{secrets.MNEMONIC_KEY}}
