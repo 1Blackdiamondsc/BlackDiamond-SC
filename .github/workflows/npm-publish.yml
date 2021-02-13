@@ -14,16 +14,10 @@ jobs:
       - uses: actions/checkout@v2
       - uses: actions/setup-node@v1
         with:
-          node-version: 14
-      - run: npm install yarn -g
-      - run: npm install truffle -g
-      - run: yarn
-      - run: yarn coverage
-      - run: yarn bulid
-        env:
-          INFURA_API_KEY: ${{secrets.INFURA_KEY}}
-          MNEMONIC: ${{secrets.MNEMONIC_KEY}}
-            
+          node-version: 12
+      - run: npm ci
+      - run: npm test
+
   publish-npm:
     needs: build
     runs-on: ubuntu-latest
@@ -31,13 +25,12 @@ jobs:
       - uses: actions/checkout@v2
       - uses: actions/setup-node@v1
         with:
-          node-version: 14
+          node-version: 12
           registry-url: https://registry.npmjs.org/
-      - run: npm install
+      - run: npm ci
       - run: npm publish
         env:
-          INFURA_API_KEY: ${{secrets.INFURA_KEY}}
-          MNEMONIC: ${{secrets.MNEMONIC_KEY}}
+          NODE_AUTH_TOKEN: ${{secrets.npm_token}}
 
   publish-gpr:
     needs: build
@@ -46,10 +39,9 @@ jobs:
       - uses: actions/checkout@v2
       - uses: actions/setup-node@v1
         with:
-          node-version: 14
+          node-version: 12
           registry-url: https://npm.pkg.github.com/
-      - run: npm install
+      - run: npm ci
       - run: npm publish
         env:
-          INFURA_API_KEY: ${{secrets.INFURA_KEY}}
-          MNEMONIC: ${{secrets.MNEMONIC_KEY}}
+          NODE_AUTH_TOKEN: ${{secrets.GITHUB_TOKEN}}
