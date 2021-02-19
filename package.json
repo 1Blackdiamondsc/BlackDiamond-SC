@@ -74,7 +74,7 @@
     "lint-staged": "10.5.4",
     "@openzeppelin/test-helpers": "0.5.10",
     "remix-ide": "0.10.3",
-    "sol-merger": "0.1.4",
+    "sol-merger": "3.1.0",
     "solidity-coverage": "0.7.15",
     "solium": "1.2.5",
     "solium-plugin-zeppelin": "0.0.2",
