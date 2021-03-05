@@ -9512,10 +9512,10 @@ opener@~1.4.0:
   resolved "https://registry.yarnpkg.com/opener/-/opener-1.4.3.tgz#5c6da2c5d7e5831e8ffa3964950f8d6674ac90b8"
   integrity sha1-XG2ixdflgx6P+jlklQ+NZnSskLg=
 
-openzeppelin-solidity@3.4.0:
-  version "3.4.0"
-  resolved "https://registry.yarnpkg.com/openzeppelin-solidity/-/openzeppelin-solidity-3.4.0.tgz#02018570c29630247e68fb82937b2c3185ed45df"
-  integrity sha512-329HOVApCH24VUST4dz8q7X/lcGm6IdRQ/gAGx2ZWaKYrfX4xMy9oEBBI3n1ih3re8ubUNELrMzgSAnqj2hpeg==
+openzeppelin-solidity@3.4.1:
+  version "3.4.1"
+  resolved "https://registry.yarnpkg.com/openzeppelin-solidity/-/openzeppelin-solidity-3.4.1.tgz#c250f0c46b0ed38437b91bba80fed369adf1b09e"
+  integrity sha512-cr23CIbIbs77AV/l1rCB1ppSE/ROIyM+9126GYH/t+ehYwIs1FWHevZfgXQi1JFhXZqxOHjW6isRWmlDVR4OLA==
 
 optimism@^0.14.0:
   version "0.14.0"
