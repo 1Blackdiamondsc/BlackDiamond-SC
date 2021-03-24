@@ -84,7 +84,7 @@
     "crypto": "1.0.1",
     "erc1820": "git+https://github.com/0xjac/ERC1820#885549fe3e9f0fd22444f78532be3dce4ee8a5e2",
     "ethereumjs-wallet": "1.0.1",
-    "openzeppelin-solidity": "3.4.1",
+    "openzeppelin-solidity": "4.0.0",
     "truffle": "5.2.5",
     "truffle-hdwallet-provider": "1.0.17"
   },
