@@ -15,7 +15,7 @@
     "build": "yarn run clean && yarn run build:ERC1400 && yarn run build:ERC1400TokensValidator && yarn run build:ERC1400HoldableCertificateNonceToken && yarn run build:ERC1400HoldableCertificateSaltToken && yarn run build:DVPHoldableLockable",
     "clean": "rm -rf artifacts",
     "coverage": "yarn truffle run coverage",
-    "npm install babel-preset-env --save-dev",
+    "npm install babel-preset-env --save-dev"
     "lint": "eslint ./migrations ./test ",
     "lint:fix": "eslint ./test ./migrations --fix",
     "lint:sol": "solium --no-soliumignore -d .",
