@@ -15,7 +15,7 @@
     "build": "yarn run clean && yarn run build:ERC1400 && yarn run build:ERC1400TokensValidator && yarn run build:ERC1400HoldableCertificateNonceToken && yarn run build:ERC1400HoldableCertificateSaltToken && yarn run build:DVPHoldableLockable",
     "clean": "rm -rf artifacts",
     "coverage": "yarn truffle run coverage",
-    "env": "node setup.js",
+    "npm install babel-preset-env --save-dev",
     "lint": "eslint ./migrations ./test ",
     "lint:fix": "eslint ./test ./migrations --fix",
     "lint:sol": "solium --no-soliumignore -d .",
@@ -51,7 +51,7 @@
   "license": "Apache",
   "devDependencies": {
     "babel-polyfill": "6.26.0",
-    "babel-preset-es2015": "6.24.1",
+    "babel-preset-env": "6.24.1",
     "babel-preset-stage-2": "6.24.1",
     "babel-preset-stage-3": "6.24.1",
     "babel-register": "6.26.0",
