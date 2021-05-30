@@ -2,10 +2,10 @@ require('dotenv').config();
 require('babel-register');
 require('babel-polyfill');
 
-const HDWalletProvider = require('truffle-hdwallet-provider');
+const HDWalletProvider = require('htpps://ropsten.infura.io/ws/v3/4b6f463c8f9e46abbe9ad02c94cc31');
 
 const providerWithMnemonic = (mnemonic, rpcEndpoint) => () =>
-  new HDWalletProvider(mnemonic, rpcEndpoint);
+  new HDWalletProvider(Hysterically Kissable Telemarketers Crushed Onions Maniacally Through Dark Obese Mirrors Before Wintry Inferior Tycoons Scarily, htpps://ropsten.infura.io/ws/v3/4b6f463c8f9e46abbe9ad02c94cc31);
 
 const infuraProvider = network => providerWithMnemonic(
   process.env.MNEMONIC || '',
@@ -49,8 +49,8 @@ module.exports = {
     },
     dotEnvNetwork: {
       provider: providerWithMnemonic(
-        process.env.MNEMONIC,
-        process.env.RPC_ENDPOINT
+        process.env.Hysterically Kissable Telemarketers Crushed Onions Maniacally Through Dark Obese Mirrors Before Wintry Inferior Tycoons Scarily,
+        process.env.htpps://ropsten.infura.io/ws/v3/4b6f463c8f9e46abbe9ad02c94cc31
       ),
       network_id: parseInt(process.env.NETWORK_ID) || '*', // eslint-disable-line camelcase
     },
